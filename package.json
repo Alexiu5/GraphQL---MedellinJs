@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon src/App.js",
+    "dev": "nodemon src/App.js",
     "standard-fix": "standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

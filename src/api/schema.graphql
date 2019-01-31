@@ -1,0 +1,61 @@
+#Type name, first letter must be Upper
+#Data type:  String, Int, ID, Boolean, Float
+
+enum Language {
+    SPANISH
+    ENGLISH
+}
+
+type User {
+    idUser: ID!
+    username: String!
+    fullName: String
+    language: Language!
+    trips: [Trip]!
+}
+
+type Trip {
+    idTrip: ID!
+    name: String!,
+    placeName: String!
+    user: User!
+    comments: [Comment]!
+}
+
+type Comment {
+    comment:String
+    user: User!
+}
+
+input UserInput {
+    username: String!
+    fullname: String!
+    language: Language
+}
+
+input TripInput {
+    name: String!
+    placeName: String
+    userId: ID!
+}
+
+input CommentInput {
+    comment: String!
+    userId: ID!
+    tripId: ID!
+}
+
+#Queries (GET)
+type Query {
+    trips: [Trip]!
+    tripById(tripId:ID!):Trip
+    users:[User]!
+    userByUsername(username: String!): User
+}
+
+#Mutation (POST, PUT, DELETE)
+type Mutation{
+    createUser(input: UserInput!): User!
+    createTrip(input: TripInput): Trip!
+    createComment(input: CommentInput): Trip!
+}
